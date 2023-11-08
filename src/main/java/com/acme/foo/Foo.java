@@ -12,32 +12,60 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "FooServlet", urlPatterns = "/fooServlet")
 public class Foo extends HttpServlet {
     
-    private static final boolean F = true;
+    private static final boolean T = true;
+
+    private static final boolean F = false;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Cookie c1 = new Cookie("1", "1"); // Pos
         response.addCookie(c1);
+
+
 
         Cookie c2 = new Cookie("2", "2"); // Neg - f2a() always returns true
         c2.setSecure(returnTrue());
         response.addCookie(c2);
 
-        Cookie c3 = new Cookie("3", "3"); // Neg - Foo.F is a constant with value true
-        c3.setSecure(Foo.F);
+        Cookie c3 = new Cookie("3", "3"); // Pos
+        c3.setSecure(returnFalse());
         response.addCookie(c3);
-        
-        Cookie c4 = new Cookie("4", "4"); // Neg - Bar.F is a constant with value true
-        c4.setSecure(Bar.F);
+
+
+
+        Cookie c4 = new Cookie("4", "4"); // Neg - Foo.F is a constant with value true
+        c4.setSecure(Foo.T);
         response.addCookie(c4);
 
-        Cookie c5 = getCookie(true);
+        Cookie c5 = new Cookie("5", "5"); // Pos
+        c5.setSecure(Foo.F);
         response.addCookie(c5);
+        
+        
+        
+        Cookie c6 = new Cookie("6", "6"); // Neg - Bar.F is a constant with value true
+        c6.setSecure(Bar.T);
+        response.addCookie(c6);
+
+        Cookie c7 = new Cookie("7", "7"); // Pos
+        c7.setSecure(Bar.F);
+        response.addCookie(c7);
+
+
+
+        Cookie c8 = getCookie(true); // Neg - Called with true
+        response.addCookie(c8);
+
+        Cookie c9 = getCookie(false); // Pos
+        response.addCookie(c9);
     }
 
     public boolean returnTrue() { return true; }
 
+    public boolean returnFalse() { return false; }
+
     public Cookie getCookie(boolean b) {
-        Cookie c = new Cookie("5", "5"); // Neg - Always called with true
+        Cookie c = new Cookie("c", "c"); // Depends on argument
         c.setSecure(b);
         return c;
     }
