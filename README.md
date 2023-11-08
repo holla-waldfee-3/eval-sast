@@ -8,6 +8,9 @@ bearer scan --only-rule java_lang_cookie_missing_secure,java_lang_insecure_cooki
 # Dedicated rules for setHttpOnly and setSecure
 semgrep scan --config="r/java.servlets.security.cookie-issecure-false.cookie-issecure-false" --config="r/java.lang.security.audit.cookie-missing-secure-flag.cookie-missing-secure-flag" --config="r/java.lang.security.audit.cookie-missing-httponly.cookie-missing-httponly" .
 
+# Uploading results to the cloud
+semgrep ci
+
 snyk code test .
 ```
 
