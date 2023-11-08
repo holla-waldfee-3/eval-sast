@@ -58,6 +58,18 @@ public class Foo extends HttpServlet {
 
         Cookie c9 = getCookie(false); // Pos
         response.addCookie(c9);
+
+
+
+        Cookie c14 = new Cookie("14", "14"); // Neg - Passing local variable true
+        boolean b14 = true;
+        c14.setSecure(b14);
+        response.addCookie(c14);
+
+        Cookie c15 = new Cookie("15", "15"); // Pos
+        boolean b15 = false;
+        c15.setSecure(b15);
+        response.addCookie(c15);
     }
 
     public boolean t() { return true; }
