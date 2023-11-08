@@ -33,7 +33,7 @@ public class Foo extends HttpServlet {
 
 
 
-        Cookie c4 = new Cookie("4", "4"); // Neg - Foo.F is a constant with value true
+        Cookie c4 = new Cookie("4", "4"); // Neg - Foo.T is a constant with value true
         c4.setSecure(Foo.T);
         response.addCookie(c4);
 
@@ -43,7 +43,7 @@ public class Foo extends HttpServlet {
         
         
         
-        Cookie c6 = new Cookie("6", "6"); // Neg - Bar.F is a constant with value true
+        Cookie c6 = new Cookie("6", "6"); // Neg - Bar.T is a constant with value true
         c6.setSecure(Bar.T);
         response.addCookie(c6);
 

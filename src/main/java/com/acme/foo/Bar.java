@@ -21,12 +21,12 @@ public class Bar extends HttpServlet {
         Cookie c10 = new Cookie("10", "10"); // Neg - It is not javax.servlet.http.Cookie
         //response.addCookie(c10);
 
-        HttpCookie c11 = new HttpCookie("11", "11"); // Pos
+        HttpCookie c11 = new HttpCookie("11", "11"); // Neg - It is not javax.servlet.http.Cookie
         //response.addCookie(c11.get);
 
 
 
-        javax.servlet.http.Cookie c12 = new javax.servlet.http.Cookie("12", "12"); // Neg - Foo.F is a constant with value true
+        javax.servlet.http.Cookie c12 = new javax.servlet.http.Cookie("12", "12"); // Neg - Bar.T is a constant with value true
         c12.setSecure(Bar.T);
         response.addCookie(c12);
 
