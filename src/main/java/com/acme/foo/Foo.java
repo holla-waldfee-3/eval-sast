@@ -24,11 +24,11 @@ public class Foo extends HttpServlet {
 
 
         Cookie c2 = new Cookie("2", "2"); // Neg - f2a() always returns true
-        c2.setSecure(returnTrue());
+        c2.setSecure(t());
         response.addCookie(c2);
 
         Cookie c3 = new Cookie("3", "3"); // Pos
-        c3.setSecure(returnFalse());
+        c3.setSecure(f());
         response.addCookie(c3);
 
 
@@ -60,9 +60,9 @@ public class Foo extends HttpServlet {
         response.addCookie(c9);
     }
 
-    public boolean returnTrue() { return true; }
+    public boolean t() { return true; }
 
-    public boolean returnFalse() { return false; }
+    public boolean f() { return false; }
 
     public Cookie getCookie(boolean b) {
         Cookie c = new Cookie("c", "c"); // Depends on argument
