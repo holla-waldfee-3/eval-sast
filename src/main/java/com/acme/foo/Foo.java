@@ -18,58 +18,58 @@ public class Foo extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Cookie c1 = new Cookie("1", "1"); // Pos
-        response.addCookie(c1);
+        Cookie pos_default = new Cookie("1", "1"); // Pos
+        response.addCookie(pos_default);
 
 
 
-        Cookie c2 = new Cookie("2", "2"); // Neg - f2a() always returns true
-        c2.setSecure(t());
-        response.addCookie(c2);
+        Cookie neg_meth_true = new Cookie("2", "2"); // Neg - f2a() always returns true
+        neg_meth_true.setSecure(t());
+        response.addCookie(neg_meth_true);
 
-        Cookie c3 = new Cookie("3", "3"); // Pos
-        c3.setSecure(f());
-        response.addCookie(c3);
+        Cookie pos_meth_false = new Cookie("3", "3"); // Pos
+        pos_meth_false.setSecure(f());
+        response.addCookie(pos_meth_false);
 
 
 
-        Cookie c4 = new Cookie("4", "4"); // Neg - Foo.T is a constant with value true
-        c4.setSecure(Foo.T);
-        response.addCookie(c4);
+        Cookie neg_const_true = new Cookie("4", "4"); // Neg - Foo.T is a constant with value true
+        neg_const_true.setSecure(Foo.T);
+        response.addCookie(neg_const_true);
 
-        Cookie c5 = new Cookie("5", "5"); // Pos
-        c5.setSecure(Foo.F);
-        response.addCookie(c5);
+        Cookie pos_const_false = new Cookie("5", "5"); // Pos
+        pos_const_false.setSecure(Foo.F);
+        response.addCookie(pos_const_false);
         
         
         
-        Cookie c6 = new Cookie("6", "6"); // Neg - Bar.T is a constant with value true
-        c6.setSecure(Bar.T);
-        response.addCookie(c6);
+        Cookie neg_other_class_const_true = new Cookie("6", "6"); // Neg - Bar.T is a constant with value true
+        neg_other_class_const_true.setSecure(Bar.T);
+        response.addCookie(neg_other_class_const_true);
 
-        Cookie c7 = new Cookie("7", "7"); // Pos
-        c7.setSecure(Bar.F);
-        response.addCookie(c7);
-
-
-
-        Cookie c8 = getCookie(true); // Neg - Called with true
-        response.addCookie(c8);
-
-        Cookie c9 = getCookie(false); // Pos
-        response.addCookie(c9);
+        Cookie pos_other_class_const_false = new Cookie("7", "7"); // Pos
+        pos_other_class_const_false.setSecure(Bar.F);
+        response.addCookie(pos_other_class_const_false);
 
 
 
-        Cookie c14 = new Cookie("14", "14"); // Neg - Passing local variable true
-        boolean b14 = true;
-        c14.setSecure(b14);
-        response.addCookie(c14);
+        Cookie neg_param_true = getCookie(true); // Neg - Called with true
+        response.addCookie(neg_param_true);
 
-        Cookie c15 = new Cookie("15", "15"); // Pos
-        boolean b15 = false;
-        c15.setSecure(b15);
-        response.addCookie(c15);
+        Cookie pos_param_false = getCookie(false); // Pos
+        response.addCookie(pos_param_false);
+
+
+
+        Cookie neg_local_var_true = new Cookie("14", "14"); // Neg - Passing local variable true
+        boolean lvart = true;
+        neg_local_var_true.setSecure(lvart);
+        response.addCookie(neg_local_var_true);
+
+        Cookie pos_local_var_false = new Cookie("15", "15"); // Pos
+        boolean lvarf = false;
+        pos_local_var_false.setSecure(lvarf);
+        response.addCookie(pos_local_var_false);
     }
 
     public boolean t() { return true; }
