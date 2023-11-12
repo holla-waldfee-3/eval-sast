@@ -25,6 +25,28 @@ https://github.com/semgrep/semgrep-rules/blob/develop/java/lang/security/audit/c
 https://github.com/semgrep/semgrep-rules/blob/develop/java/lang/security/audit/cookie-missing-secure-flag.yaml
 https://github.com/semgrep/semgrep-rules/blob/develop/java/servlets/security/cookie-issecure-false.yaml
 
-# Snyk rules
+## Snyk rules
 
 https://docs.snyk.io/scan-using-snyk/snyk-code/snyk-code-security-rules/java-rules
+
+# Bearer Script
+
+Tested with:
+```
+bearer version: 1.29.0
+sha: e81636a6bb5f125fdfd9b03c5d3ba0102e66e048
+```
+
+``````
+bearer scan --only-rule=java_lang_cookie_missing_secure,java_lang_insecure_cookie src/main/java/com/acme/foo # FPs +FNs
+
+# Comment out 69-72
+
+bearer scan --only-rule=java_lang_cookie_missing_secure,java_lang_insecure_cookie src/main/java/com/acme/foo # Finding with commented code
+
+bearer scan --only-rule=java_lang_cookie_missing_secure,java_lang_insecure_cookie src/main/java/com/acme/foo/Foo.java # No finding at all
+
+# Delete lines 64-72
+
+bearer scan --only-rule=java_lang_cookie_missing_secure,java_lang_insecure_cookie src/main/java/com/acme/foo/Foo.java # 8 findings, FPs and FNs
+```
