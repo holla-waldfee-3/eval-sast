@@ -2,6 +2,9 @@
 
 ```
 
+# Node.js + Express
+bearer scan . --only-rule=javascript_express_insecure_cookie
+
 # The rules mix setHttpOnly and setSecure
 bearer scan --only-rule java_lang_cookie_missing_secure,java_lang_insecure_cookie .
 
@@ -13,6 +16,9 @@ semgrep ci
 
 snyk code test .
 ```
+
+## Bearer rules
+https://github.com/bearer/bearer-rules/blob/main/rules/javascript/express/insecure_cookie.yml
 
 ## Semgrep rules
 https://github.com/semgrep/semgrep-rules/blob/develop/java/lang/security/audit/cookie-missing-httponly.yaml

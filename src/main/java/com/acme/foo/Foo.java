@@ -23,7 +23,7 @@ public class Foo extends HttpServlet {
 
 
 
-        Cookie neg_meth_true = new Cookie("2", "2"); // Neg - f2a() always returns true
+        Cookie neg_meth_true = new Cookie("2", "2"); // Neg - t() always returns true
         neg_meth_true.setSecure(t());
         response.addCookie(neg_meth_true);
 
