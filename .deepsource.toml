@@ -4,9 +4,12 @@ version = 1
 name = "javascript"
 
   [analyzers.meta]
+  plugins = ["angularjs"]
   environment = [
     "nodejs",
-    "browser"
+    "browser",
+    "vitest",
+    "jasmine"
   ]
 
 [[analyzers]]
