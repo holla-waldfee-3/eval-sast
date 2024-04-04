@@ -5,7 +5,10 @@ name = "javascript"
 
   [analyzers.meta]
   plugins = ["angularjs"]
-  environment = ["nodejs"]
+  environment = [
+    "nodejs",
+    "browser"
+  ]
 
 [[analyzers]]
 name = "java"
