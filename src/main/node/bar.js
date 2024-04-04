@@ -20,44 +20,44 @@ app.get('/fooServlet', (req, res) => {
     res.cookie('1', '1');
 
     // Neg: Cookie with setSecure always true
-    res.cookie('2', '2', { secure: t() });
+    res.cookie('2', '2', { httpOnly: t() });
 
     // Pos: Cookie with setSecure false
-    res.cookie('3', '3', { secure: f() });
+    res.cookie('3', '3', { httpOnly: f() });
 
     // Neg: Cookie with constant true
-    res.cookie('4', '4', { secure: T });
+    res.cookie('4', '4', { httpOnly: T });
 
     // Pos: Cookie with constant false
-    res.cookie('5', '5', { secure: F });
+    res.cookie('5', '5', { httpOnly: F });
 
     // Neg: Cookie with other class constant true
-    res.cookie('6', '6', { secure: Bar.T });
+    res.cookie('6', '6', { httpOnly: Bar.T });
 
     // Pos: Cookie with other class constant false
-    res.cookie('7', '7', { secure: Bar.F });
+    res.cookie('7', '7', { httpOnly: Bar.F });
 
     // Neg: Cookie called with true
     const negParamTrue = getCookie(true);
-    res.cookie(negParamTrue.name, negParamTrue.value, { secure: negParamTrue.secure });
+    res.cookie(negParamTrue.name, negParamTrue.value, { httpOnly: negParamTrue.secure });
 
     // Pos: Cookie called with false
     const posParamFalse = getCookie(false);
-    res.cookie(posParamFalse.name, posParamFalse.value, { secure: posParamFalse.secure });
+    res.cookie(posParamFalse.name, posParamFalse.value, { httpOnly: posParamFalse.secure });
 
     // Neg: Cookie with local variable true
     let lvart = true;
-    res.cookie('14', '14', { secure: lvart });
+    res.cookie('14', '14', { httpOnly: lvart });
 
     // Pos: Cookie with local variable false
     let lvarf = false;
-    res.cookie('15', '15', { secure: lvarf });
+    res.cookie('15', '15', { httpOnly: lvarf });
 
     // Neg: Cookie with true literal
-    res.cookie('16', '16', { secure: true });
+    res.cookie('16', '16', { httpOnly: true });
 
     // Pos: Cookie with false literal
-    res.cookie('17', '17', { secure: false });
+    res.cookie('17', '17', { httpOnly: false });
 
     res.send('Cookies set');
 });
@@ -71,7 +71,7 @@ function f() {
 }
 
 function getCookie(b) {
-    return { name: 'c', value: 'c', secure: b };
+    return { name: 'c', value: 'c', httpOnly: b };
 }
 
 // Mock Bar class with constants
