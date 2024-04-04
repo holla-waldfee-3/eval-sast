@@ -32,7 +32,7 @@ jobs:
       run: mvn clean package
 
     - name: NextGen Static Analysis
-      run: ${GITHUB_WORKSPACE}/sl analyze --app ShiftLeftJava --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --vcs-prefix-correction "io/shiftleft=src/main/java/" --java $(pwd)/target/yourJarFileName.jar
+      run: ${GITHUB_WORKSPACE}/sl analyze --app ShiftLeftJava --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --vcs-prefix-correction "io/shiftleft=src/main/java/" --java $(pwd)/target/eval-sast-0.0.1.jar
 
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
