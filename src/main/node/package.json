@@ -1,0 +1,23 @@
+{
+  "name": "eval-sast",
+  "version": "0.0.1",
+  "description": "Eval SAST tools",
+  "main": "foo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holla-waldfee-2/eval-sast.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/holla-waldfee-2/eval-sast/issues"
+  },
+  "homepage": "https://github.com/holla-waldfee-2/eval-sast#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2"
+  }
+}
