@@ -10,7 +10,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: F }
+    cookie: { secure: F, httpOnly: false }
 }))
 
 app.get('/fooServlet', (req, res) => {
