@@ -60,8 +60,14 @@ app.get('/fooServlet', (req, res) => {
     // Pos: Cookie with false literal
     res.cookie('17', '17', { httpOnly: false });
 
-    const cookieValue = req.query['bar'];
-    res.cookie("18", cookieValue);
+    const cookieValue1 = req.query['bar'];
+    res.cookie("18", cookieValue1);
+
+    let cookieValue2 = req.query['bar'];
+    res.cookie("19", echo(cookieValue2));
+
+    let cookieValue3 = echo(req.query['bar']);
+    res.cookie("20", cookieValue3);
 
     res.send('Cookies set');
 });
@@ -76,6 +82,10 @@ function f() {
 
 function getCookie(b) {
     return { name: 'c', value: 'c', httpOnly: b };
+}
+
+function echo(s) {
+    return s;
 }
 
 // Mock Bar class with constants
