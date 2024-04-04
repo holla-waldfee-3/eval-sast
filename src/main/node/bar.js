@@ -1,17 +1,20 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
-
-const app = express();
-app.use(cookieParser());
+const session = require('express-session')
 
 // Constants to represent true and false
 const T = true;
 const F = false;
 
+const app = express();
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}))
+
 app.get('/fooServlet', (req, res) => {
     eval(req.params['foo']);
-
-    // Adding cookies in different ways
 
     // Pos: Default cookie
     res.cookie('1', '1');

@@ -2,7 +2,7 @@
   "name": "eval-sast",
   "version": "0.0.1",
   "description": "Eval SAST tools",
-  "main": "foo.js",
+  "main": "bar.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +18,11 @@
   "homepage": "https://github.com/holla-waldfee-2/eval-sast#readme",
   "dependencies": {
     "cookie-parser": "^1.4.6",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "express-session": "^1.18.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-security": "^2.1.1"
   }
 }
