@@ -14,6 +14,7 @@ app.use(session({
 }))
 
 app.get('/fooServlet', (req, res) => {
+
     eval(req.params['foo']);
 
     // Pos: Default cookie
@@ -58,6 +59,9 @@ app.get('/fooServlet', (req, res) => {
 
     // Pos: Cookie with false literal
     res.cookie('17', '17', { httpOnly: false });
+
+    const cookieValue = req.query['bar'];
+    res.cookie("18", cookieValue);
 
     res.send('Cookies set');
 });
