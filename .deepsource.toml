@@ -7,9 +7,7 @@ name = "javascript"
   plugins = ["angularjs"]
   environment = [
     "nodejs",
-    "browser",
-    "vitest",
-    "jasmine"
+    "browser"
   ]
 
 [[analyzers]]
